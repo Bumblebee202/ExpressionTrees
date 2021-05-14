@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExpressionTrees.Database.Models;
+using ExpressionTrees.Tests;
+using System;
 
 namespace ExpressionTrees
 {
@@ -6,7 +8,19 @@ namespace ExpressionTrees
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Filter filter = new Filter
+            {
+                Value = 5000,
+                Date = DateTime.Now,
+            };
+
+            Test1(filter);
+        }
+
+        static void Test1(Filter filter)
+        {
+            TestBase test = new LinqTest();
+            test.Test(filter);
         }
     }
 }
