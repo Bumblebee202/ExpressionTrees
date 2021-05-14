@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ExpressionTrees.Database
 {
@@ -10,7 +9,11 @@ namespace ExpressionTrees.Database
     {
         public DbSet<TestEntity> TestEntities { get; set; }
 
-        public Context() => Database.EnsureCreated();
+        public Context()
+        {
+            //Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
             => optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ExpressionTrees;Trusted_Connection=True;");
@@ -32,15 +35,21 @@ namespace ExpressionTrees.Database
 
                 DateTime date = new DateTime(2021, month, day);
 
-                bool booleanValue = random.Next(0, 11) < 5;
+                bool booleanValue = true;
+                if (i % 3 == 0)
+                {
+                    booleanValue = false;
+                }
+
+                int id = i + 1;
 
                 TestEntity entity = new TestEntity
                 {
-                    ID = i + 1,
+                    ID = id,
                     BooleanValue = booleanValue,
                     Value = value,
                     Date = date,
-                    Text = $"{value} {date}"
+                    Text = $"{id} {value} {date.ToShortDateString()} {booleanValue}"
                 };
 
                 entities.Add(entity);

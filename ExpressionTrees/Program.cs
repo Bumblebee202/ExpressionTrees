@@ -10,16 +10,24 @@ namespace ExpressionTrees
         {
             Filter filter = new Filter
             {
+                BooleanValue = false,
                 Value = 5000,
                 Date = DateTime.Now,
             };
 
             Test1(filter);
+            Test2(filter);
         }
 
         static void Test1(Filter filter)
         {
             TestBase test = new LinqTest();
+            test.Test(filter);
+        }
+
+        static void Test2(Filter filter)
+        {
+            TestBase test = new ExpressionTreeTest();
             test.Test(filter);
         }
     }
