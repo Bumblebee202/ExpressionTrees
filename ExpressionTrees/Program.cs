@@ -10,9 +10,9 @@ namespace ExpressionTrees
         {
             Filter filter = new Filter
             {
-                ID = 1000,
+                ID = 5000,
                 //BooleanValue = null,
-                //Value = 10,
+                Value = 10,
                 //Date = DateTime.Now,
             };
             Test1(filter);
