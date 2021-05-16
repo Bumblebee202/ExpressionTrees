@@ -41,10 +41,10 @@ namespace ExpressionTrees.Tests
             Stop();
         }
 
-        IQueryable<T> Filter<T, Y>(IQueryable<T> source, Y filter)
+        IQueryable<T> Filter<T>(IQueryable<T> source, Filter filter)
         {
             Type tType = typeof(T);
-            Type yType = typeof(Y);
+            Type yType = typeof(Filter);
 
             ParameterExpression tParameter = Expression.Parameter(tType, "t");
             ParameterExpression yParameter = Expression.Parameter(yType, "y");
