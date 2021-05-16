@@ -1,9 +1,6 @@
 ﻿using ExpressionTrees.Database;
 using ExpressionTrees.Database.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ExpressionTrees.Tests
 {
@@ -17,6 +14,11 @@ namespace ExpressionTrees.Tests
             Start();
 
             IQueryable<TestEntity> entities = context.TestEntities;
+
+            if (filter.ID.HasValue)
+            {
+                entities = entities.Where(e => e.ID <= filter.ID);
+            }
 
             if (filter.BooleanValue.HasValue)
             { 
@@ -38,6 +40,7 @@ namespace ExpressionTrees.Tests
                 entities = entities.Where(e => e.Text.Equals(filter.Text));
             }
 
+            //Show(entities.ToList());
             entities.ToList();
 
             Stop();

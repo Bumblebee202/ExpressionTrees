@@ -1,6 +1,8 @@
 ﻿using ExpressionTrees.Database.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace ExpressionTrees.Tests
 {
@@ -27,6 +29,15 @@ namespace ExpressionTrees.Tests
             timeSpan.Milliseconds / 10);
             Console.WriteLine(TestName);
             Console.WriteLine(elapsedTime);
+            Console.WriteLine($"TotalMilliseconds {timeSpan.TotalMilliseconds}\n\n");
+        }
+
+        protected void Show(IEnumerable<TestEntity> source)
+        {
+            foreach (var item in source)
+            {
+                Console.WriteLine($"ID: {item.ID}");
+            }
         }
     }
 }

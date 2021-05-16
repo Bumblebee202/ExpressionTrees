@@ -10,13 +10,14 @@ namespace ExpressionTrees
         {
             Filter filter = new Filter
             {
-                BooleanValue = false,
-                Value = 5000,
-                Date = DateTime.Now,
+                ID = 1000,
+                //BooleanValue = null,
+                //Value = 10,
+                //Date = DateTime.Now,
             };
-
             Test1(filter);
             Test2(filter);
+            Test1(filter);
         }
 
         static void Test1(Filter filter)
